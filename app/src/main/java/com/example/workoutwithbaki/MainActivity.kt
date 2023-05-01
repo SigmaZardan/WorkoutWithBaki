@@ -5,15 +5,20 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -57,6 +62,7 @@ fun BakiWorkoutApp() {
 
 @Composable
 fun BakiWorkoutList(workouts: List<Workout>, modifier: Modifier = Modifier) {
+
     LazyColumn(
         modifier = modifier
     ) {
@@ -69,12 +75,24 @@ fun BakiWorkoutList(workouts: List<Workout>, modifier: Modifier = Modifier) {
 
 @Composable
 fun BakiWorkoutCard(workout: Workout, modifier: Modifier = Modifier) {
+    var isTouched by remember { mutableStateOf(false) }
+
     val dayNumber = (workouts.indexOf(workout) + 1)
     Card(
-        modifier = modifier.padding(15.dp)
+        modifier = modifier
+            .padding(15.dp)
+            .fillMaxWidth(),
     ) {
         Column(
-            modifier = Modifier.padding(10.dp),
+            modifier = Modifier
+                .padding(10.dp)
+                .clickable { isTouched = !isTouched }
+                .animateContentSize(
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioMediumBouncy,
+                        stiffness = Spring.StiffnessLow
+                    )
+                ),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
@@ -82,8 +100,11 @@ fun BakiWorkoutCard(workout: Workout, modifier: Modifier = Modifier) {
                 style = MaterialTheme.typography.h2
             )
             BakiWorkoutTitle(workout.workoutTitleRes)
-            BakiWorkoutImage(workout.workoutImageRes)
-            BakiWorkoutDescription(workout.workoutDescriptionRes)
+
+            if (isTouched) {
+                BakiWorkoutImage(workout.workoutImageRes)
+                BakiWorkoutDescription(workout.workoutDescriptionRes)
+            }
         }
     }
 }
