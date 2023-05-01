@@ -17,18 +17,18 @@ val Sriracha = FontFamily(
 // Set of Material typography styles to start with
 val Typography = Typography(
     defaultFontFamily = Sriracha,
-    h1 = TextStyle(
+    h2 = TextStyle(
         fontWeight = FontWeight.Normal,
         color = Color.Gray,
         fontSize = 30.sp
     ),
-    h2 = TextStyle(
-        fontWeight = FontWeight.Bold,
-        fontSize = 20.sp
-    ),
     h3 = TextStyle(
         fontWeight = FontWeight.Bold,
-        fontSize = 20.sp
+        fontSize = 25.sp
+    ),
+    h1 = TextStyle(
+        fontWeight = FontWeight.Bold,
+        fontSize = 40.sp
     ),
 
     body1 = TextStyle(
