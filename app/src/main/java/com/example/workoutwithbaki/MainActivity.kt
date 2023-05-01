@@ -59,6 +59,11 @@ fun BakiWorkoutDescription() {
 
 }
 
+@Composable
+fun BakiWorkoutAppBar() {
+
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
