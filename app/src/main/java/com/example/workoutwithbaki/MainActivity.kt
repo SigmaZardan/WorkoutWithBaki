@@ -45,12 +45,21 @@ private val workouts = workouts()
 
 @Composable
 fun BakiWorkoutApp() {
-    BakiWorkoutList(workouts = workouts)
+    Scaffold(
+        topBar = {
+            BakiWorkoutAppBar()
+        }
+    ) {
+        BakiWorkoutList(workouts = workouts, modifier = Modifier.padding(it))
+    }
+
 }
 
 @Composable
-fun BakiWorkoutList(workouts: List<Workout>) {
-    LazyColumn() {
+fun BakiWorkoutList(workouts: List<Workout>, modifier: Modifier = Modifier) {
+    LazyColumn(
+        modifier = modifier
+    ) {
         items(workouts) { workout ->
             BakiWorkoutCard(workout)
         }
@@ -107,14 +116,20 @@ fun BakiWorkoutDescription(@StringRes workoutDescriptionRes: Int) {
 }
 
 @Composable
-fun BakiWorkoutAppBar() {
-
+fun BakiWorkoutAppBar(modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
+    ) {
+        Text(text = stringResource(id = R.string.app_name), style = MaterialTheme.typography.h1)
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     WorkoutWithBakiTheme {
-        BakiWorkoutApp()
+        BakiWorkoutAppBar()
     }
 }
