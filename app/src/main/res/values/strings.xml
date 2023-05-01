@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">WorkoutWithBaki</string>
+    <string name="day"> Day %d</string>
+    <string name="title1"> Push-ups</string>
+    <string name="description1"> The classic upper-body exercise that targets your chest, shoulders, and triceps.</string>
+    <string name="title2"> Crunches</string>
+    <string name="description2"> Great for strengthening your core and getting those six-pack ab</string>
+    <string name="title3"> Squats</string>
+    <string name="description3"> A full-body workout that focuses on your legs, glutes, and core.</string>
+    <string name="title4"> Jumping Jacks</string>
+    <string name="description4"> A cardio exercise that helps to get the heart rate up and burn calories</string>
+    <string name="title5"> Lunges</string>
+    <string name="description5">Another great leg workout that targets your quads, hamstrings, and glutes.</string>
+    <string name="title6">Planks</string>
+    <string name="description6">A challenging core exercise that strengthens your abs, back, and shoulders.</string>
+    <string name="title7"><Sit-Ups></Sit-Ups></string>
+    <string name="description7">A classic exercise that focuses on your abs and helps to improve your overall core strength.</string>
+
+
+</resources>
